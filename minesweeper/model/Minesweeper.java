@@ -84,13 +84,20 @@ public class Minesweeper{
         } else {
             if(this.mines.contains(location)){
                 this.currentState = GameState.LOST;
+                movesCount ++;
             }
             if(this.validSpots.contains(location)){
-                int mineNeighborCount = getMineCount(location);
+                validSpots.remove(location);
+                movesCount ++;
+                this.currentState = GameState.IN_PROGRESS;
+                if (this.validSpots.size() == 0) {
+                    this.currentState = GameState.WON;
+                }
             }
         }
     }
 
     //tostring
     //getpossible collection thing
+
 }
