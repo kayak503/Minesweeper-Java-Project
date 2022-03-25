@@ -144,5 +144,6 @@ public class Minesweeper{
 
     //tostring
     //getpossible collection thing
+    //We also need a function for resetting the game - see instruction 4c
 
 }

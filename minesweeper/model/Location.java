@@ -34,7 +34,7 @@ public class Location {
      */
     @Override
     public String toString(){
-        return "( " + this.row + ", " + this.col + ")";
+        return "(" + this.row + ", " + this.col + ")";
     }
 
     /**
