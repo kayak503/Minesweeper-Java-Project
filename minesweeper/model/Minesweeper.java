@@ -10,6 +10,7 @@ public class Minesweeper{
     private int movesCount;
     private GameState currentState;
 
+
     public Minesweeper(int rows, int cols, int mineCount){
         this.rows = rows;
         this.cols = cols;
@@ -22,6 +23,6 @@ public class Minesweeper{
     public GameState getGameState(){return this.currentState;}
 
     public void makeSelection() throws MinesweeperException{
-        
+
     }
 }
