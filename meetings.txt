@@ -1,0 +1,11 @@
+Meeting 1
+
+Date/time 3/26/2022 12:00
+Location TBD - gleason academic building
+Area of Focus - finish problem solving questions and write out tests
+
+Meeting 2
+
+Date/time 3/27/2022 2:00
+Location TBD - Most likely golisano building
+Area of Focus - Work on Command Line Interface
