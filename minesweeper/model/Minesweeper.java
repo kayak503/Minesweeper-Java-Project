@@ -143,6 +143,49 @@ public class Minesweeper{
     }
 
     //tostring
+
+    @Override
+    public String toString() {
+
+        String returnString = ""; 
+
+        for(int row = 0; row < rows; row++){
+            for(int col = 0; col < cols; col++){
+                Location space = new Location(row, col);
+                if (validSpots.contains(space) || mines.contains(space)) {
+                    returnString += COVERED;
+                }
+                else {
+                    returnString += Integer.toString(getMineCount(space));
+                }
+                
+            }
+            returnString += "\n";
+        }
+
+        return returnString;
+    }
+
+    public String showBoard() {
+
+        String returnString = ""; 
+
+        for(int row = 0; row < rows; row++){
+            for(int col = 0; col < cols; col++){
+                Location space = new Location(row, col);
+                if (mines.contains(space)) {
+                    returnString += MINE;
+                }
+                else {
+                    returnString += Integer.toString(getMineCount(space));
+                }
+                
+            }
+            returnString += "\n";
+        }
+
+        return returnString;
+    }
     //getpossible collection thing
     //We also need a function for resetting the game - see instruction 4c
 
