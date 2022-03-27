@@ -27,7 +27,7 @@ public class CLI {
             input = input.toLowerCase();
             String[] tokens = input.split(" ");
 
-            if (tokens[0] == " "){
+            if (tokens[0].equals("help")){
                 System.out.println("Commands:");
                 System.out.println("\t help - this help message");
                 System.out.println("\t pick <row> <col> - uncovers cell a <row> <col>");
@@ -35,7 +35,7 @@ public class CLI {
                 System.out.println("\t reset - resets to a new game");
                 System.out.println("\t quit - quits the game");
                 System.out.println(game);
-            } else if(tokens[0] == "pick" ){
+            } else if(tokens[0].equals("pick" )){
                 Location newMove = new Location(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
                 game.makeSelection(newMove);
                 if (game.getGameState() == GameState.LOST){
@@ -46,14 +46,14 @@ public class CLI {
                 } else{
                     System.out.println(game);
                 }
-            } else if (tokens[0] == "quit"){
+            } else if (tokens[0].equals("quit")){
                 break;
-            } else if (tokens[0] == "reset"){
+            } else if (tokens[0].equals("reset")){
                 System.out.println("Resetting the game");
                 Minesweeper newGame  = new Minesweeper(ROW, COL, MINES);
                 game = newGame;
                 System.out.println(game);
-            } else if(tokens[0] == "hint"){
+            } else if(tokens[0].equals("hint")){
                 HashSet<Location> moves = new HashSet<>();
                 Location[] arrayMoves = moves.toArray(new Location[moves.size()]);
                 System.out.println("Give " + arrayMoves[0] + " a try!");
@@ -61,5 +61,6 @@ public class CLI {
             }
 
             }
+            scanner.close();
         }
     }
