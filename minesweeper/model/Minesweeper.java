@@ -142,7 +142,6 @@ public class Minesweeper{
         }
     }
 
-    //tostring
 
     @Override
     public String toString() {
@@ -166,6 +165,11 @@ public class Minesweeper{
         return returnString;
     }
 
+    /**
+     * showBoard should be called when a user selects a mine and the game ends.
+     * this method will show the entire board without covers
+     * @return A string representation of the completed board without any covers
+     */
     public String showBoard() {
 
         String returnString = ""; 
@@ -188,5 +192,14 @@ public class Minesweeper{
     }
     //getpossible collection thing
     //We also need a function for resetting the game - see instruction 4c
+
+
+    /**
+     * a standard geter function for validSpots
+     * @return all of the validSpots on the board  
+     */
+    public HashSet<Location> getPossibleSelections(){
+        return this.validSpots;
+    }
 
 }
