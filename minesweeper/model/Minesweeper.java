@@ -218,7 +218,13 @@ public class Minesweeper{
         }
     }
 
-    // check the last statement
+    /**
+     * Returns the current character for this position, either covered, mine
+     * or the value of the getMineCount function
+     * @param location The location that we wish to check
+     * @return The character that represents this location
+     * @throws Exception Handles invalid exceptions
+     */
     public char getSymbol(Location location) throws Exception{
         if(validSpots.contains(location)){
             return COVERED;
@@ -229,6 +235,12 @@ public class Minesweeper{
         }
     }
 
+    /**
+     * Determines if a given location is covered
+     * @param location The location we wish to check
+     * @return A boolean to indicate whether it is covered or not
+     * @throws Exception Handles invalid locations
+     */
     public boolean isCovered(Location location) throws Exception{
         if(validSpots.contains(location) || mines.contains(location)){
             return true;

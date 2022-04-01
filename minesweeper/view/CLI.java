@@ -17,11 +17,14 @@ public class CLI {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+        //Creates the static variables and the game
         final int ROW = 4;
         final int COL = 4;
         final int MINES = 2;
         Minesweeper game = new Minesweeper(ROW, COL, MINES);
 
+
+        //Create scanner and print possible commands
         Scanner scanner = new Scanner(System.in);
         System.out.println("Mines: " + MINES);
         System.out.println("Commands:");
