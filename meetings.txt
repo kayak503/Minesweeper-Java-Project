@@ -9,3 +9,13 @@ Meeting 2
 Date/time 3/27/2022 2:00
 Location TBD - Most likely golisano building
 Area of Focus - Work on Command Line Interface
+
+Meeting 3
+
+Date/time 4/4/2022 2:00
+Location TBD - Most likely golisano building
+Area of Focus - Work on Command Line Interface
+
+Date/time 4/5/2022 2:00
+Location TBD - Most likely golisano building
+Area of Focus - Work on Command Line Interface
