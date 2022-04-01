@@ -1,7 +1,7 @@
 package minesweeper.view;
 
-import java.awt.Color;
 
+import javafx.scene.paint.Color;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,6 +14,7 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -48,7 +49,19 @@ public class GUI extends Application{
         HBox top = new HBox();
         top.getChildren().addAll(moveCount, mineCount, reset, hint);
 
-        mainContainer.getChildren().addAll(top);
+
+        GridPane gridPane = new GridPane();
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                //make observer thing
+                Button button = makeButton();
+                gridPane.add(button, j, i);
+            }
+        }
+
+        mainContainer.setPadding(new Insets(15));
+
+        mainContainer.getChildren().addAll(top, gridPane);
 
         Scene scene = new Scene(mainContainer);
         stage.setTitle("Minesweeper!");
@@ -57,17 +70,15 @@ public class GUI extends Application{
         
     }
 
-    public static Button makeCoveredButton(){
+    private static Button makeButton(){
         Button button = new Button("");
         button.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        button.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(10), Insets.EMPTY);
-        button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(10), BorderStroke.MEDIUM)));
+        button.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(5), Insets.EMPTY)));
+        button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderStroke.THIN)));
         return button;
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
-
 }
