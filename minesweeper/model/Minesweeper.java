@@ -35,6 +35,7 @@ public class Minesweeper{
         this.mines = new HashSet<>();
         this.validSpots = new HashSet<>();
         Random rng = new Random();
+        rng.setSeed(1);
         this.observer = null;
 
         //Until the set reaches the desired size, add unique locations for mines
@@ -221,7 +222,7 @@ public class Minesweeper{
     public char getSymbol(Location location) throws Exception{
         if(validSpots.contains(location)){
             return COVERED;
-        } else if(mines.contains(location)){
+        } else if(mines.contains(location) && this.currentState.equals(GameState.LOST)){
             return MINE;
         } else {
             return Character.forDigit(getMineCount(location), 10);

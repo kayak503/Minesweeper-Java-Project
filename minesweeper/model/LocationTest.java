@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.platform.commons.annotation.Testable;
 
 @Testable
-public class TestLocation {
+public class LocationTest {
     @Test
     public void testToString(){
         Location l = new Location(1,2);
