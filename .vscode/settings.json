@@ -1,7 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "d:\\SoftDevII\\junit-platform-console-standalone-1.8.2.jar",
-        "c:\\Users\\kayak\\Documents\\Code\\Java\\JavaTests\\junit-platform-console-standalone-1.8.2.jar"
-    ]
-}
