@@ -202,4 +202,19 @@ public class Minesweeper{
         return this.validSpots;
     }
 
+    public void register(MinesweeperObserver observer){
+
+    }
+
+    private void notifyObserver(Location location){
+        
+    }
+
+    public char getSymbol(Location location) throws Exception{
+
+    }
+
+    public boolean isCovered(Location location) throws Exception{
+
+    }
 }
