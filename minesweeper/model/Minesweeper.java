@@ -14,6 +14,7 @@ public class Minesweeper{
     private GameState currentState;
     private HashSet<Location> validSpots;
     private HashSet<Location> mines;
+    private MinesweeperObserver observer;
 
 
     /**
@@ -34,6 +35,7 @@ public class Minesweeper{
         this.mines = new HashSet<>();
         this.validSpots = new HashSet<>();
         Random rng = new Random();
+        this.observer = null;
 
         //Until the set reaches the desired size, add unique locations for mines
         while(this.mines.size() != this.mineCount){
@@ -139,6 +141,7 @@ public class Minesweeper{
                     this.currentState = GameState.WON;
                 }
             }
+            notifyObserver(location);
         }
     }
 
@@ -203,11 +206,13 @@ public class Minesweeper{
     }
 
     public void register(MinesweeperObserver observer){
-
+        this.observer = observer;
     }
 
     private void notifyObserver(Location location){
-        
+        if (observer != null){
+            observer.cellUpdated(location);
+        }
     }
 
     // check the last statement
