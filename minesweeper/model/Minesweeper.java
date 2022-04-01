@@ -210,11 +210,21 @@ public class Minesweeper{
         
     }
 
+    // check the last statement
     public char getSymbol(Location location) throws Exception{
-
+        if(validSpots.contains(location)){
+            return COVERED;
+        } else if(mines.contains(location)){
+            return MINE;
+        } else {
+            return Character.forDigit(getMineCount(location), 10);
+        }
     }
 
     public boolean isCovered(Location location) throws Exception{
-
+        if(validSpots.contains(location) || mines.contains(location)){
+            return true;
+        }
+        return false;
     }
 }
