@@ -67,6 +67,8 @@ public class Minesweeper{
      */
     public GameState getGameState(){return this.currentState;}
 
+    public int getTotalMines(){return mineCount;}
+
     
     /**
      * A helper function. Given a valid location, it will determine the quantity of
