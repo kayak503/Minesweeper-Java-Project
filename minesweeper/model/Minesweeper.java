@@ -228,7 +228,7 @@ public class Minesweeper{
     public char getSymbol(Location location) throws Exception{
         if(validSpots.contains(location)){
             return COVERED;
-        } else if(mines.contains(location) && this.currentState.equals(GameState.LOST)){
+        } else if(mines.contains(location) && (this.currentState.equals(GameState.LOST) || this.currentState.equals(GameState.WON))){
             return MINE;
         } else {
             return Character.forDigit(getMineCount(location), 10);

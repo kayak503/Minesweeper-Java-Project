@@ -17,7 +17,7 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
 
     @Override
     public void cellUpdated(Location location) {
-        Button button = buttonGrid[location.getCol()][location.getRow()];
+        Button button = buttonGrid[location.getRow()][location.getCol()];
 
         assignButton(location,button);
         if (minesweeper.getGameState() == GameState.LOST || minesweeper.getGameState() == GameState.WON){
