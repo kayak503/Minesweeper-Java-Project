@@ -21,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import minesweeper.model.ButtonClick;
+import minesweeper.model.Hint;
 import minesweeper.model.Location;
 import minesweeper.model.Minesweeper;
 import minesweeper.model.MinesweeperObserverImp;
@@ -80,6 +81,8 @@ public class GUI extends Application{
             }
         }
 
+        hint.setOnAction(new Hint(this.minesweeper, buttonGrid));
+
         mainContainer.setPadding(new Insets(15));
         mainContainer.getChildren().addAll(top, gridPane);
 
@@ -96,6 +99,7 @@ public class GUI extends Application{
                 Minesweeper minesweeperReset = new Minesweeper(minesweeper);
                 minesweeper = minesweeperReset;
                 minesweeper.observerReset();
+                hint.setOnAction(new Hint(minesweeper, buttonGrid));
             }
         });
 

@@ -1,9 +1,14 @@
 package minesweeper.model;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 
 public class MinesweeperObserverImp implements MinesweeperObserver {
 
@@ -68,6 +73,7 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
                 button.setDisable(false);
                 button.setOnAction(new ButtonClick(minesweeper, new Location(i, j), button));
                 button.setGraphic(null);
+                button.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
             }
         }
     }
