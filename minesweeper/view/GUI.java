@@ -77,17 +77,17 @@ public class GUI extends Application{
                 gridPane.add(button, j, i);
             }
         }
-        MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper);
-        minesweeper.register(observer);
 
         mainContainer.setPadding(new Insets(15));
         mainContainer.getChildren().addAll(top, gridPane);
 
         //Create a status lable
-        Label status = new Label("Keep sweeping!");
+        Label status = new Label("New Game!");
         status.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY, Insets.EMPTY)));
         status.setTextFill(Color.RED);
         mainContainer.getChildren().add(status);
+        MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper, status);
+        minesweeper.register(observer);
 
         mainContainer.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY,Insets.EMPTY)));
         Scene scene = new Scene(mainContainer);
