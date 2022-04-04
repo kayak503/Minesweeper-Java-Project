@@ -1,6 +1,7 @@
 package minesweeper.model;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -8,11 +9,12 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
 
     private final Button[][] buttonGrid;
     private final Minesweeper minesweeper;
+    private Label status;
     
-    public MinesweeperObserverImp(Button[][] buttonGrid, Minesweeper minesweeper) {
+    public MinesweeperObserverImp(Button[][] buttonGrid, Minesweeper minesweeper, Label status) {
         this.buttonGrid = buttonGrid;
         this.minesweeper = minesweeper;
-
+        this.status = status;
     }
 
     @Override
@@ -22,6 +24,15 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
         assignButton(location,button);
         if (minesweeper.getGameState() == GameState.LOST || minesweeper.getGameState() == GameState.WON){
             showBoardImages();
+        }
+        if(minesweeper.getGameState() == GameState.LOST){
+            this.status.setText("BOOOOOOOMMMMMMM!!!!!!");
+        } else if(minesweeper.getGameState() == GameState.WON){
+            this.status.setText("CONGRATULATIONS!!!!!!");
+        } else if(minesweeper.getGameState() == GameState.NOT_STARTED){
+            this.status.setText("New Game");
+        } else if(minesweeper.getGameState() == GameState.IN_PROGRESS){
+            this.status.setText("Keep Sweeping");
         }
         button.setDisable(true);
     }
