@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 public class MinesweeperObserverImp implements MinesweeperObserver {
 
     private final Button[][] buttonGrid;
-    private final Minesweeper minesweeper;
+    private Minesweeper minesweeper;
     private Label status;
     
     public MinesweeperObserverImp(Button[][] buttonGrid, Minesweeper minesweeper, Label status) {
@@ -25,15 +25,9 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
         if (minesweeper.getGameState() == GameState.LOST || minesweeper.getGameState() == GameState.WON){
             showBoardImages();
         }
-        if(minesweeper.getGameState() == GameState.LOST){
-            this.status.setText("BOOOOOOOMMMMMMM!!!!!!");
-        } else if(minesweeper.getGameState() == GameState.WON){
-            this.status.setText("CONGRATULATIONS!!!!!!");
-        } else if(minesweeper.getGameState() == GameState.NOT_STARTED){
-            this.status.setText("New Game");
-        } else if(minesweeper.getGameState() == GameState.IN_PROGRESS){
-            this.status.setText("Keep Sweeping");
-        }
+        
+        updateStatusText();
+
         button.setDisable(true);
     }
     
@@ -52,7 +46,10 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
             if(display == minesweeper.MINE){
                 button.setGraphic(new ImageView(new Image("file:media/images/mine24.png")));
             } else if(display == minesweeper.COVERED){
-                return;
+                int count = minesweeper.getMineCount(location);
+                if (count != 0){
+                    button.setText(minesweeper.getMineCount(location) + "");
+                }
             } else if(display != '0'){
                 button.setText(display + "");
             }
@@ -60,13 +57,30 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
             e.printStackTrace();
         }
     }
-    public void reDrawBoard(){
+    public void reDrawBoard(Minesweeper minesweeper){
+        this.minesweeper = minesweeper;
+
+        updateStatusText();
         for(int i = 0; i < buttonGrid.length; i++){
             for(int j = 0; j < buttonGrid.length; j++){
                 Button button = buttonGrid[i][j];
                 button.setText("");
                 button.setDisable(false);
+                button.setOnAction(new ButtonClick(minesweeper, new Location(i, j), button));
+                button.setGraphic(null);
             }
+        }
+    }
+
+    private void updateStatusText() {
+        if(minesweeper.getGameState() == GameState.LOST){
+            this.status.setText("BOOOOOOOMMMMMMM!!!!!!");
+        } else if(minesweeper.getGameState() == GameState.WON){
+            this.status.setText("CONGRATULATIONS!!!!!!");
+        } else if(minesweeper.getGameState() == GameState.NOT_STARTED){
+            this.status.setText("New Game");
+        } else if(minesweeper.getGameState() == GameState.IN_PROGRESS){
+            this.status.setText("Keep Sweeping");
         }
     }
 }

@@ -11,6 +11,7 @@ public class ButtonClick implements EventHandler<ActionEvent> {
     private final Location location;
     private final Button button;
 
+
     public ButtonClick(Minesweeper minesweeper, Location location, Button button) {
         this.minesweeper = minesweeper;
         this.location = location;
