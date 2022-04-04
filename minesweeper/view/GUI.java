@@ -41,11 +41,23 @@ public class GUI extends Application{
 
         //The contents of the top portion of the VBox
         Label moveCount = new Label();
-        moveCount.setText(minesweeper.getMovesCount() + "");
+        moveCount.setText("MOVES \n" + minesweeper.getMovesCount());
+        moveCount.setTextFill(Color.RED);
+        moveCount.setPadding(new Insets(20));
+        moveCount.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         Label mineCount = new Label();
-        mineCount.setText(minesweeper.getTotalMines() + "");
+        mineCount.setText("MINES \n" + minesweeper.getTotalMines());
+        mineCount.setTextFill(Color.RED);
+        mineCount.setPadding(new Insets(20));
+        mineCount.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         Button reset = new Button("Reset");
+        reset.setMinHeight(55);
+        reset.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        reset.setTextFill(Color.GOLD);
         Button hint = new Button("Hint");
+        hint.setMinHeight(55);
+        hint.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+        hint.setTextFill(Color.GOLD);
         HBox top = new HBox();
         top.getChildren().addAll(moveCount, mineCount, reset, hint);
 
@@ -60,9 +72,15 @@ public class GUI extends Application{
         }
 
         mainContainer.setPadding(new Insets(15));
-
         mainContainer.getChildren().addAll(top, gridPane);
 
+        //Create a status lable
+        Label status = new Label("Keep sweeping!");
+        status.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY, Insets.EMPTY)));
+        status.setTextFill(Color.RED);
+        mainContainer.getChildren().add(status);
+
+        mainContainer.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY,Insets.EMPTY)));
         Scene scene = new Scene(mainContainer);
         stage.setTitle("Minesweeper!");
         stage.setScene(scene);
@@ -73,6 +91,8 @@ public class GUI extends Application{
     private static Button makeButton(){
         Button button = new Button("");
         button.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        button.setMinHeight(40);
+        button.setMinWidth(40);
         button.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(5), Insets.EMPTY)));
         button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderStroke.THIN)));
         return button;
