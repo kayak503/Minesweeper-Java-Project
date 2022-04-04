@@ -59,6 +59,14 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+    }
+    public void reDrawBoard(){
+        for(int i = 0; i < buttonGrid.length; i++){
+            for(int j = 0; j < buttonGrid.length; j++){
+                Button button = buttonGrid[i][j];
+                button.setText("");
+                button.setDisable(false);
+            }
+        }
     }
 }

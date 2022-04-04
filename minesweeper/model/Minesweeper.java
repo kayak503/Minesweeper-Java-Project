@@ -56,6 +56,37 @@ public class Minesweeper{
         }
     }
 
+
+    public Minesweeper(Minesweeper oldBoard){
+
+        this.rows = oldBoard.rows;
+        this.cols = oldBoard.cols;
+        this.mineCount = oldBoard.mineCount;
+        this.currentState = GameState.NOT_STARTED;
+        this.movesCount = 0;
+        this.mines = new HashSet<>();
+        this.validSpots = new HashSet<>();
+        Random rng = new Random();
+        rng.setSeed(1);
+        this.observer = oldBoard.observer;
+
+        //Until the set reaches the desired size, add unique locations for mines
+        while(this.mines.size() != this.mineCount){
+            int newRow = rng.nextInt(rows);
+            int newCol = rng.nextInt(cols);
+            this.mines.add(new Location(newRow, newCol));
+        }
+
+        //Once all mines have been decided, make every other position valid
+        for(int row = 0; row < rows; row++){
+            for(int col = 0; col < cols; col++){
+                Location l = new Location(row, col);
+                if(!mines.contains(l)){
+                    validSpots.add(l);
+                }
+            }
+        }
+    }
     /**
      * 
      * @return the amount of moves so far in the game
@@ -246,5 +277,9 @@ public class Minesweeper{
             return true;
         }
         return false;
+    }
+
+    public void observerReset(){
+        observer.reDrawBoard();
     }
 }

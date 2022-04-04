@@ -3,6 +3,8 @@ package minesweeper.view;
 
 import javafx.scene.paint.Color;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -88,6 +90,14 @@ public class GUI extends Application{
         mainContainer.getChildren().add(status);
         MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper, status);
         minesweeper.register(observer);
+        reset.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                Minesweeper minesweeperReset = new Minesweeper(minesweeper);
+                minesweeper = minesweeperReset;
+                minesweeper.observerReset();
+            }
+        });
 
         mainContainer.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY,Insets.EMPTY)));
         Scene scene = new Scene(mainContainer);
