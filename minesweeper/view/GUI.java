@@ -18,7 +18,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import minesweeper.model.ButtonClick;
+import minesweeper.model.Location;
 import minesweeper.model.Minesweeper;
+import minesweeper.model.MinesweeperObserverImp;
 
 public class GUI extends Application{
     private static final int ROWS = 4;
@@ -37,6 +40,8 @@ public class GUI extends Application{
     public void start(Stage stage) throws Exception {
         //The vbox that will hold everything
         VBox mainContainer = new VBox();
+        //Button 2d array
+        Button[][] buttonGrid = new Button[ROWS][COLS];
 
 
         //The contents of the top portion of the VBox
@@ -67,9 +72,13 @@ public class GUI extends Application{
             for(int j = 0; j < COLS; j++){
                 //make observer thing
                 Button button = makeButton();
+                buttonGrid[i][j] = button;
+                button.setOnAction(new ButtonClick(minesweeper, new Location(i, j), button));
                 gridPane.add(button, j, i);
             }
         }
+        MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper);
+        minesweeper.register(observer);
 
         mainContainer.setPadding(new Insets(15));
         mainContainer.getChildren().addAll(top, gridPane);
