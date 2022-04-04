@@ -19,9 +19,25 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
     public void cellUpdated(Location location) {
         Button button = buttonGrid[location.getCol()][location.getRow()];
 
-        char display;
+        assignButton(location,button);
+        if (minesweeper.getGameState() == GameState.LOST || minesweeper.getGameState() == GameState.WON){
+            showBoardImages();
+        }
+        button.setDisable(true);
+    }
+    
+    public void showBoardImages(){
+        for(int i = 0; i < buttonGrid.length; i++){
+            for(int j = 0; j < buttonGrid.length; j++){
+                Button button = buttonGrid[i][j];
+                assignButton(new Location(i, j), button);
+                button.setDisable(true);
+            }
+        }
+    }
+    public void assignButton(Location location, Button button){
         try {
-            display = minesweeper.getSymbol(location);
+            char display = minesweeper.getSymbol(location);
             if(display == minesweeper.MINE){
                 button.setGraphic(new ImageView(new Image("file:media/images/mine24.png")));
             } else if(display == minesweeper.COVERED){
@@ -32,6 +48,6 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        button.setDisable(true);
-    }   
+        
+    }
 }
