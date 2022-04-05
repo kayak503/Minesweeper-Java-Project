@@ -91,7 +91,7 @@ public class GUI extends Application{
         status.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY, Insets.EMPTY)));
         status.setTextFill(Color.RED);
         mainContainer.getChildren().add(status);
-        MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper, status);
+        MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper, status, moveCount);
         minesweeper.register(observer);
         reset.setOnAction(new EventHandler<ActionEvent>(){
             @Override
@@ -100,6 +100,7 @@ public class GUI extends Application{
                 minesweeper = minesweeperReset;
                 minesweeper.observerReset();
                 hint.setOnAction(new Hint(minesweeper, buttonGrid));
+                moveCount.setText("MOVES \n" + 0);
             }
         });
 
