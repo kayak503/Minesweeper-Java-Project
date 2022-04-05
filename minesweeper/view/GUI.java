@@ -69,15 +69,15 @@ public class GUI extends Application{
         HBox top = new HBox();
         top.getChildren().addAll(moveCount, mineCount, reset, hint);
 
-
+        // set up button grid 
         GridPane gridPane = new GridPane();
-        for(int i = 0; i < ROWS; i++){
-            for(int j = 0; j < COLS; j++){
+        for(int row = 0; row < ROWS; row++){
+            for(int col = 0; col < COLS; col++){
                 //make observer thing
                 Button button = makeButton();
-                buttonGrid[i][j] = button;
-                button.setOnAction(new ButtonClick(minesweeper, new Location(i, j)));
-                gridPane.add(button, j, i);
+                buttonGrid[row][col] = button;
+                button.setOnAction(new ButtonClick(minesweeper, new Location(row, col)));
+                gridPane.add(button, col, row);
             }
         }
 
@@ -86,23 +86,35 @@ public class GUI extends Application{
         mainContainer.setPadding(new Insets(15));
         mainContainer.getChildren().addAll(top, gridPane);
 
-        //Create a status lable
+        //Create a status label
         Label status = new Label("New Game!");
         status.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY, Insets.EMPTY)));
         status.setTextFill(Color.RED);
         mainContainer.getChildren().add(status);
+
+        // Create and register MinesweeperObserver
         MinesweeperObserverImp observer = new MinesweeperObserverImp(buttonGrid, minesweeper, status, moveCount);
         minesweeper.register(observer);
+
+        // setup reset button logic
         reset.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                // when the reset button is clicked we should get a new game. this sets that up
+                
+                // create a new minesweeper game with the same parameters (size and mine count) 
                 Minesweeper minesweeperReset = new Minesweeper(minesweeper);
+                
+                // set current instance to new instance
                 minesweeper = minesweeperReset;
-                minesweeper.observerReset();
+
+                // creates na anew hint helper for the new game
                 hint.setOnAction(new Hint(minesweeper, buttonGrid));
+                // resets moves counter
                 moveCount.setText("MOVES \n" + 0);
             }
         });
+
 
         mainContainer.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY,Insets.EMPTY)));
         Scene scene = new Scene(mainContainer);

@@ -24,7 +24,7 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
     private Label status; // the status label
     private Label moveCount; // the moveCount label
 
-    private static Map<Integer, Color> colorMap;
+    private static Map<Integer, Color> colorMap; // a color map that shows the colors fonts should be depending on the amount of adjacent mines
     
     static {
         colorMap = new HashMap<Integer, Color>();

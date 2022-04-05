@@ -70,6 +70,10 @@ public class Minesweeper{
         rng.setSeed(1);
         this.observer = oldBoard.observer;
 
+        // if the old board had an observer tell it to reset itself for the new game
+        if (this.observer != null) {observer.reCoverBoard(this);
+        }
+
         //Until the set reaches the desired size, add unique locations for mines
         while(this.mines.size() != this.mineCount){
             int newRow = rng.nextInt(rows);
@@ -279,7 +283,4 @@ public class Minesweeper{
         return false;
     }
 
-    public void observerReset(){
-        observer.reCoverBoard(this);
-    }
 }
