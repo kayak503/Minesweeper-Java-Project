@@ -67,7 +67,6 @@ public class Minesweeper{
         this.mines = new HashSet<>();
         this.validSpots = new HashSet<>();
         Random rng = new Random();
-        rng.setSeed(1);
         this.observer = oldBoard.observer;
 
         // if the old board had an observer tell it to reset itself for the new game
