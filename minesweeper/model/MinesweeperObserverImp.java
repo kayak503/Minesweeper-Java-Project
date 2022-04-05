@@ -15,11 +15,13 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
     private final Button[][] buttonGrid;
     private Minesweeper minesweeper;
     private Label status;
+    private Label moveCount;
     
-    public MinesweeperObserverImp(Button[][] buttonGrid, Minesweeper minesweeper, Label status) {
+    public MinesweeperObserverImp(Button[][] buttonGrid, Minesweeper minesweeper, Label status, Label moveCount) {
         this.buttonGrid = buttonGrid;
         this.minesweeper = minesweeper;
         this.status = status;
+        this.moveCount = moveCount;
     }
 
     @Override
@@ -32,6 +34,8 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
         }
         
         updateStatusText();
+
+        this.moveCount.setText("MOVES \n" + minesweeper.getMovesCount() + "");
 
         button.setDisable(true);
     }
