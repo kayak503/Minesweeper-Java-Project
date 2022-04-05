@@ -280,6 +280,6 @@ public class Minesweeper{
     }
 
     public void observerReset(){
-        observer.reDrawBoard(this);
+        observer.reCoverBoard(this);
     }
 }

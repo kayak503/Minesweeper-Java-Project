@@ -76,7 +76,7 @@ public class GUI extends Application{
                 //make observer thing
                 Button button = makeButton();
                 buttonGrid[i][j] = button;
-                button.setOnAction(new ButtonClick(minesweeper, new Location(i, j), button));
+                button.setOnAction(new ButtonClick(minesweeper, new Location(i, j)));
                 gridPane.add(button, j, i);
             }
         }
