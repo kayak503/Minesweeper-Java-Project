@@ -139,7 +139,7 @@ public class MinesweeperObserverImp implements MinesweeperObserver {
      * 
      * @param location the location of the button that is to be uncovered
      */
-    public void uncoverButton(Location location){
+    private void uncoverButton(Location location){
         // get the button from the location given.
         Button button = buttonGrid[location.getRow()][location.getCol()];
         try { 
