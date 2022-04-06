@@ -53,21 +53,30 @@ public class GUI extends Application{
         moveCount.setTextFill(Color.RED);
         moveCount.setPadding(new Insets(20));
         moveCount.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
         Label mineCount = new Label();
         mineCount.setText("MINES \n" + minesweeper.getTotalMines());
         mineCount.setTextFill(Color.RED);
         mineCount.setPadding(new Insets(20));
         mineCount.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
         Button reset = new Button("Reset");
         reset.setMinHeight(55);
         reset.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         reset.setTextFill(Color.GOLD);
+
         Button hint = new Button("Hint");
         hint.setMinHeight(55);
         hint.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         hint.setTextFill(Color.GOLD);
+
+        Button solve = new Button("Solve");
+        solve.setMinHeight(55);
+        solve.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        solve.setTextFill(Color.GOLD);
+
         HBox top = new HBox();
-        top.getChildren().addAll(moveCount, mineCount, reset, hint);
+        top.getChildren().addAll(moveCount, mineCount, reset, hint, solve);
 
         // set up button grid 
         GridPane gridPane = new GridPane();
