@@ -18,9 +18,9 @@ public class MinesweeperSolver implements Configuration{
         this.ROWS = ROWS;
         this.COLS = COLS;
     }
-    private MinesweeperSolver(Minesweeper minesweeper,MinesweeperSolver old){
+    private MinesweeperSolver(Minesweeper minesweeper, MinesweeperSolver old){
         this.minesweeper = minesweeper;
-        this.locationSolution = old.locationSolution;
+        this.locationSolution = new ArrayList<>(old.locationSolution);
         this.ROWS = old.ROWS;
         this.COLS = old.COLS;
     }
@@ -47,6 +47,7 @@ public class MinesweeperSolver implements Configuration{
             successors.add( nextMinesweeperSolver);
             
             nextLocation = getNextLocation(nextLocation);
+            //System.out.println(this.minesweeper.getPossibleSelections());
         }
         
         return successors;
@@ -54,18 +55,21 @@ public class MinesweeperSolver implements Configuration{
 
     @Override
     public boolean isValid() {
+        //System.out.println("Location Solution: " + locationSolution);
+        System.out.println(minesweeper);
         try {
             minesweeper.makeSelection(locationSolution.get(locationSolution.size()-1));
         } catch (Exception e) {
             return false;
         }
+        //System.out.println(this.minesweeper.getGameState());
         return this.minesweeper.getGameState() != GameState.LOST;
     }
 
     @Override
     public boolean isGoal() {
-        isValid();
-        return this.minesweeper.getGameState() == GameState.WON;
+        //isValid();
+        return this.minesweeper.getGameState().equals(GameState.WON);
     }
 
     public List<Location> getLocationSolution() {
@@ -80,7 +84,7 @@ public class MinesweeperSolver implements Configuration{
 
     private Location getNextLocation(Location location){
         if (location.getCol() == COLS){
-            return new Location( (location.getRow() +1) % COLS ,0);
+            return new Location( (location.getRow() +1) ,0);
         }
         return new Location( (location.getRow()), location.getCol()+1 );
     }
