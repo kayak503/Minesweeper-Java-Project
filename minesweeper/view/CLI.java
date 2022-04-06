@@ -81,16 +81,21 @@ public class CLI {
                 System.out.println("Give " + arrayMoves[0] + " a try!");
                 System.out.println(game);
             } else if(tokens[0].equals("solve")){
+                System.out.println(game.showBoard());
                 MinesweeperSolver config = new MinesweeperSolver(game, ROW, COL);
                 Backtracker backtracker = new Backtracker(false);
                 MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
-                List<Location> steps = solution.getLocationSolution();
-                for(Location step : steps){
-                    game.makeSelection(step);
-                       System.out.println(game);
+                if(solution != null){
+                    List<Location> steps = solution.getLocationSolution();
+                    for(Location step : steps){
+                        game.makeSelection(step);
+                           System.out.println(game);
+                    }
+                } else {
+                    System.out.println("No Solution");
+                    break;
                 }
             }
-
             }
             scanner.close(); // closes the scanner at the end
         }
