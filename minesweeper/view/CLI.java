@@ -1,10 +1,14 @@
 package minesweeper.view;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
+
+import backtracker.Backtracker;
 import minesweeper.model.GameState;
 import minesweeper.model.Location;
 import minesweeper.model.Minesweeper;
+import minesweeper.model.MinesweeperSolver;
 
 /**
  * This is the basic CLI for the minesweeper game, it has all of the commands
@@ -33,6 +37,7 @@ public class CLI {
         System.out.println("\t hint - displays a safe selection");
         System.out.println("\t reset - resets to a new game");
         System.out.println("\t quit - quits the game");
+        System.out.println("\t solve - solve the game");
         System.out.println("\n" + game);
 
         while (game.getGameState() != GameState.WON && game.getGameState() != GameState.LOST){ // loops until the game state is won or lost
@@ -49,6 +54,7 @@ public class CLI {
                 System.out.println("\t hint - displays a safe selection");
                 System.out.println("\t reset - resets to a new game");
                 System.out.println("\t quit - quits the game");
+                System.out.println("\t solve - solve the game");
                 System.out.println(game);
             } else if(tokens[0].equals("pick" )){ // makes a choice on the game board
                 Location newMove = new Location(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
@@ -74,6 +80,15 @@ public class CLI {
                 Location[] arrayMoves = moves.toArray(new Location[moves.size()]);
                 System.out.println("Give " + arrayMoves[0] + " a try!");
                 System.out.println(game);
+            } else if(tokens[0].equals("solve")){
+                MinesweeperSolver config = new MinesweeperSolver(game, ROW, COL);
+                Backtracker backtracker = new Backtracker(true);
+                MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
+                List<Location> steps = solution.getLocationSolution();
+                for(Location step : steps){
+                    game.makeSelection(step);
+                       System.out.println(game);
+                }
             }
 
             }
