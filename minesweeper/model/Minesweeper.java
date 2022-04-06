@@ -56,7 +56,7 @@ public class Minesweeper{
         }
     }
 
-    public Minesweeper(Minesweeper minesweeper, Integer useless){
+    public Minesweeper(Minesweeper minesweeper){
         this.rows = minesweeper.rows;
         this.cols = minesweeper.cols;
         this.mineCount = minesweeper.mineCount;
@@ -73,7 +73,7 @@ public class Minesweeper{
     }
 
 
-    public Minesweeper(Minesweeper oldBoard){
+    public Minesweeper(Minesweeper oldBoard, Integer seed){
 
         this.rows = oldBoard.rows;
         this.cols = oldBoard.cols;
@@ -82,7 +82,15 @@ public class Minesweeper{
         this.movesCount = 0;
         this.mines = new HashSet<>();
         this.validSpots = new HashSet<>();
-        Random rng = new Random();
+        Random rng;
+        if (seed == null){
+            rng = new Random();
+        }
+        else {
+            rng = new Random(seed);
+        }
+
+        
         this.observer = oldBoard.observer;
 
         // if the old board had an observer tell it to reset itself for the new game

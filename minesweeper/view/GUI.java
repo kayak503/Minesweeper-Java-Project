@@ -103,7 +103,7 @@ public class GUI extends Application{
                 // when the reset button is clicked we should get a new game. this sets that up
                 
                 // create a new minesweeper game with the same parameters (size and mine count) 
-                Minesweeper minesweeperReset = new Minesweeper(minesweeper);
+                Minesweeper minesweeperReset = new Minesweeper(minesweeper,null);
                 
                 // set current instance to new instance
                 minesweeper = minesweeperReset;
