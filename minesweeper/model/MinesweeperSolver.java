@@ -18,7 +18,7 @@ public class MinesweeperSolver implements Configuration{
         this.ROWS = ROWS;
         this.COLS = COLS;
     }
-    public MinesweeperSolver(Minesweeper minesweeper,MinesweeperSolver old){
+    private MinesweeperSolver(Minesweeper minesweeper,MinesweeperSolver old){
         this.minesweeper = minesweeper;
         this.locationSolution = old.locationSolution;
         this.ROWS = old.ROWS;
@@ -50,10 +50,10 @@ public class MinesweeperSolver implements Configuration{
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            MinesweeperSolver nextMinesweeperSolver =new MinesweeperSolver(nextMinesweeper,this);
+            nextMinesweeperSolver.locationSolution.add(nextLocation);
 
-            successors.add(
-                new MinesweeperSolver(nextMinesweeper,this)
-            );
+            successors.add( nextMinesweeperSolver);
 
             nextLocation = getNextLocation(nextLocation);
         }

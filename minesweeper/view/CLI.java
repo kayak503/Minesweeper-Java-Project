@@ -82,7 +82,7 @@ public class CLI {
                 System.out.println(game);
             } else if(tokens[0].equals("solve")){
                 MinesweeperSolver config = new MinesweeperSolver(game, ROW, COL);
-                Backtracker backtracker = new Backtracker(true);
+                Backtracker backtracker = new Backtracker(false);
                 MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
                 List<Location> steps = solution.getLocationSolution();
                 for(Location step : steps){
