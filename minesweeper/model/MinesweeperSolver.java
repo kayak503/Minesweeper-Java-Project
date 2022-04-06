@@ -38,23 +38,14 @@ public class MinesweeperSolver implements Configuration{
         else{
             nextLocation = getNextLocation( 
                 locationSolution.get(locationSolution.size()-1) 
-                );
+            );
         }
-        while (successors.size() != 8){
-
+        for (int i = 0; i < 8; i++){
             Minesweeper nextMinesweeper = new Minesweeper(minesweeper);
-
-            try {
-                nextMinesweeper.makeSelection(nextLocation);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            MinesweeperSolver nextMinesweeperSolver =new MinesweeperSolver(nextMinesweeper,this);
+            MinesweeperSolver nextMinesweeperSolver = new MinesweeperSolver(nextMinesweeper,this);
             nextMinesweeperSolver.locationSolution.add(nextLocation);
-
             successors.add( nextMinesweeperSolver);
-
+            
             nextLocation = getNextLocation(nextLocation);
         }
         
@@ -63,11 +54,17 @@ public class MinesweeperSolver implements Configuration{
 
     @Override
     public boolean isValid() {
+        try {
+            minesweeper.makeSelection(locationSolution.get(locationSolution.size()-1));
+        } catch (Exception e) {
+            return false;
+        }
         return this.minesweeper.getGameState() != GameState.LOST;
     }
 
     @Override
     public boolean isGoal() {
+        isValid();
         return this.minesweeper.getGameState() == GameState.WON;
     }
 
