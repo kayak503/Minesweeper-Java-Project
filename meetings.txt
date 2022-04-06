@@ -19,3 +19,13 @@ Area of Focus - Work on Command Line Interface
 Date/time 4/5/2022 2:00
 Location TBD - Most likely golisano building
 Area of Focus - Work on Command Line Interface
+
+Project part 3 meetings
+
+Date/time 4/7/2022 2:00
+Location TBD - Most likely golisano building
+Area of Focus - finish the backtracker
+
+Date/time 4/9/2022 2:00
+Location TBD - Most likely golisano building
+Area of Focus - finish the backtracker
