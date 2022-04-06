@@ -27,9 +27,9 @@ import minesweeper.model.Minesweeper;
 import minesweeper.model.MinesweeperObserverImp;
 
 public class GUI extends Application{
-    private static final int ROWS = 4;
-    private static final int COLS = 4;
-    private static final int MINES = 2;
+    private static final int ROWS = 8;
+    private static final int COLS = 8;
+    private static final int MINES = 10;
 
     static final Image MINE  = new Image("file:media/images/mine24.png");
 
@@ -103,7 +103,7 @@ public class GUI extends Application{
                 // when the reset button is clicked we should get a new game. this sets that up
                 
                 // create a new minesweeper game with the same parameters (size and mine count) 
-                Minesweeper minesweeperReset = new Minesweeper(minesweeper);
+                Minesweeper minesweeperReset = new Minesweeper(minesweeper,null);
                 
                 // set current instance to new instance
                 minesweeper = minesweeperReset;
