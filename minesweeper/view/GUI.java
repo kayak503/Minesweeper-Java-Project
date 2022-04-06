@@ -27,9 +27,9 @@ import minesweeper.model.Minesweeper;
 import minesweeper.model.MinesweeperObserverImp;
 
 public class GUI extends Application{
-    private static final int ROWS = 4;
-    private static final int COLS = 4;
-    private static final int MINES = 2;
+    private static final int ROWS = 8;
+    private static final int COLS = 8;
+    private static final int MINES = 10;
 
     static final Image MINE  = new Image("file:media/images/mine24.png");
 

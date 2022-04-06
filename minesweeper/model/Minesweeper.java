@@ -56,6 +56,22 @@ public class Minesweeper{
         }
     }
 
+    public Minesweeper(Minesweeper minesweeper, Integer useless){
+        this.rows = minesweeper.rows;
+        this.cols = minesweeper.cols;
+        this.mineCount = minesweeper.mineCount;
+        this.currentState = minesweeper.currentState;
+        this.movesCount = minesweeper.movesCount;
+        this.mines = new HashSet<>();
+        this.mines.addAll(minesweeper.mines);
+        this.validSpots = new HashSet<>();
+        this.validSpots.addAll(minesweeper.validSpots);
+        this.observer = null;
+
+
+
+    }
+
 
     public Minesweeper(Minesweeper oldBoard){
 
