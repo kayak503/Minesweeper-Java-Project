@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import backtracker.Backtracker;
 import backtracker.Configuration;
 
 public class MinesweeperSolver implements Configuration{
@@ -81,5 +82,12 @@ public class MinesweeperSolver implements Configuration{
             return new Location( (location.getRow() +1) ,0);
         }
         return new Location( (location.getRow()), location.getCol()+1 );
+    }
+
+    public static MinesweeperSolver solveGame(Minesweeper minesweeper){
+        MinesweeperSolver config = new MinesweeperSolver(minesweeper, minesweeper.getRows(), minesweeper.getCols());
+        Backtracker backtracker = new Backtracker(false);
+        MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
+        return solution;
     }
 }

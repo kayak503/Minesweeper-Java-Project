@@ -301,5 +301,10 @@ public class Minesweeper{
         }
         return false;
     }
-
+    public int getCols() {
+        return cols;
+    }
+    public int getRows() {
+        return rows;
+    }
 }

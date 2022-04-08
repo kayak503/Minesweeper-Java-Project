@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
-import backtracker.Backtracker;
 import minesweeper.model.GameState;
 import minesweeper.model.Location;
 import minesweeper.model.Minesweeper;
@@ -81,25 +80,22 @@ public class CLI {
                 System.out.println("Give " + arrayMoves[0] + " a try!");
                 System.out.println(game);
             } else if(tokens[0].equals("solve")){
-                MinesweeperSolver config = new MinesweeperSolver(game, ROW, COL);
-                Backtracker backtracker = new Backtracker(false);
-                MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
+                MinesweeperSolver solution = MinesweeperSolver.solveGame(game);
                 if(solution != null){
                     List<Location> steps = solution.getLocationSolution();
 
                     for(Location step : steps){
                         game.makeSelection(step);
-                        System.out.println(game.getMovesCount());
 
-                        System.out.println("\nMoves: "+game);
-
-
+                        System.out.println("Moves: " + game.getMovesCount() + "\n");
+                        System.out.println(game);
                     }
-
                 } else {
                     System.out.println("No Solution");
                     break;
                 }
+                System.out.println("Congratulations\n");
+                System.out.println(game.showBoard());
             }
             }
             scanner.close(); // closes the scanner at the end
