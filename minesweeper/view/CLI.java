@@ -86,10 +86,16 @@ public class CLI {
                 MinesweeperSolver solution = (MinesweeperSolver)backtracker.solve(config);
                 if(solution != null){
                     List<Location> steps = solution.getLocationSolution();
+
                     for(Location step : steps){
                         game.makeSelection(step);
-                        System.out.println(game);
+                        System.out.println(game.getMovesCount());
+
+                        System.out.println("\nMoves: "+game);
+
+
                     }
+
                 } else {
                     System.out.println("No Solution");
                     break;

@@ -63,8 +63,8 @@ public class Minesweeper{
         this.currentState = minesweeper.currentState;
         this.movesCount = minesweeper.movesCount;
         
-        this.mines = minesweeper.mines;
-        this.validSpots = minesweeper.validSpots;
+        this.mines = new HashSet<>(minesweeper.mines);
+        this.validSpots = new HashSet<>(minesweeper.validSpots);
         this.observer = null;
     }
 
