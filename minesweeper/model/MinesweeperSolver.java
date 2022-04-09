@@ -13,6 +13,9 @@ public class MinesweeperSolver implements Configuration{
     private final int ROWS;
     private final int COLS;
 
+    /**
+     * A constructor to create a new solver model based off of rows and columns
+     */
     public MinesweeperSolver(Minesweeper minesweeper,int ROWS,int COLS){
         this.minesweeper = minesweeper;
         this.locationSolution = new ArrayList<>();
@@ -20,6 +23,11 @@ public class MinesweeperSolver implements Configuration{
         this.COLS = COLS;
     }
     
+    /**
+     * A constructor to create a new solvere based off of an old solver - a deep copy
+     * @param minesweeper The game state 
+     * @param old The old solver configuration that we are copying
+     */
     private MinesweeperSolver(Minesweeper minesweeper, MinesweeperSolver old){
         this.minesweeper = minesweeper;
         this.locationSolution = new ArrayList<>(old.locationSolution);

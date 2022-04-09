@@ -56,16 +56,16 @@ public class CLI {
                 System.out.println("\t solve - solve the game");
                 System.out.println(game);
             } else if(tokens[0].equals("pick" )){ // makes a choice on the game board
-                Location newMove = new Location(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
-                game.makeSelection(newMove);
-                if (game.getGameState() == GameState.LOST){
+                Location newMove = new Location(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])); //Create location with input
+                game.makeSelection(newMove); //Make the move at that location
+                if (game.getGameState() == GameState.LOST){ //If you set off a mine, react by saying boom
                     System.out.println("BOOM! You lost");
                     System.out.println(game.showBoard());
-                }else if(game.getGameState() == GameState.WON){
+                }else if(game.getGameState() == GameState.WON){ //If you cleared the last space, react by showing full board
                     System.out.println("Congratulations");
                     System.out.println(game.showBoard());
                 } else{
-                    System.out.println(game);
+                    System.out.println(game); //Else the game is in progress still. Print current config 
                 }
             } else if (tokens[0].equals("quit")){ // quits out of the game
                 break;
@@ -80,13 +80,14 @@ public class CLI {
                 System.out.println("Give " + arrayMoves[0] + " a try!");
                 System.out.println(game);
             } else if(tokens[0].equals("solve")){
+                //Get the actual solution
                 MinesweeperSolver solution = MinesweeperSolver.solveGame(game);
                 if(solution != null){
+                    //Get the list of locations that are the moves needed to solve the game
                     List<Location> steps = solution.getLocationSolution();
-
                     for(Location step : steps){
+                        //Run through each selection and make it, then update the board
                         game.makeSelection(step);
-
                         System.out.println("Moves: " + game.getMovesCount() + "\n");
                         System.out.println(game);
                     }

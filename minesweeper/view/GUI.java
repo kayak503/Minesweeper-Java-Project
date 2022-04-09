@@ -25,6 +25,7 @@ import minesweeper.model.Hint;
 import minesweeper.model.Location;
 import minesweeper.model.Minesweeper;
 import minesweeper.model.MinesweeperObserverImp;
+import minesweeper.model.Solve;
 
 public class GUI extends Application{
     private static final int ROWS = 8;
@@ -60,21 +61,27 @@ public class GUI extends Application{
         mineCount.setPadding(new Insets(20));
         mineCount.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
+        //Create the reset button and stlye it
         Button reset = new Button("Reset");
         reset.setMinHeight(55);
         reset.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         reset.setTextFill(Color.GOLD);
 
+        //Crea the hint button and style it
         Button hint = new Button("Hint");
         hint.setMinHeight(55);
         hint.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         hint.setTextFill(Color.GOLD);
 
+        //Create the solve button, style it, and add the event handler
         Button solve = new Button("Solve");
         solve.setMinHeight(55);
         solve.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         solve.setTextFill(Color.GOLD);
+        solve.setOnAction(new Solve(minesweeper));
 
+
+        //Create the HBOX that will hold all this stuff and fill it
         HBox top = new HBox();
         top.getChildren().addAll(moveCount, mineCount, reset, hint, solve);
 

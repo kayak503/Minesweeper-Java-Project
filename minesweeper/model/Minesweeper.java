@@ -250,9 +250,6 @@ public class Minesweeper{
 
         return returnString;
     }
-    //getpossible collection thing
-    //We also need a function for resetting the game - see instruction 4c
-
 
     /**
      * a standard geter function for validSpots
