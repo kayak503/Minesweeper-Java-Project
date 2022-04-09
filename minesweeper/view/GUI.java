@@ -128,7 +128,11 @@ public class GUI extends Application{
                 hint.setOnAction(new Hint(minesweeper, buttonGrid));
                 // resets moves counter
                 moveCount.setText("MOVES \n" + 0);
+                // sets new solve class to solve button
+                solve.setOnAction(new Solve(minesweeper));
+
             }
+            
         });
 
 
